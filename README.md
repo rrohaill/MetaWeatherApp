@@ -7,6 +7,7 @@ Example Android project in Kotlin which uses the https://www.metaweather.com/ ap
 - [LiveData](https://developer.android.com/topic/libraries/architecture/livedata)
 - [ViewModel](https://developer.android.com/topic/libraries/architecture/viewmodel)
 - [Data Binding](https://developer.android.com/topic/libraries/data-binding)
+- [View Binding](https://developer.android.com/topic/libraries/view-binding)
 - [ConstraintLayout](https://developer.android.com/training/constraint-layout)
 - [MVVM architecture](https://developer.android.com/jetpack/docs/guide)
 - [AndroidX](https://developer.android.com/jetpack/androidx)
