@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">MetaWeatherApp</string>
+    <string name="tomorrow_weather">Tomorrow\'s Weather</string>
+    <string name="high_low_temp_label">H %d°/L %d°</string>
+    <string name="humidity">Humidity \n%s</string>
+    <string name="wind_speed">Wind Speed \n%s</string>
+    <string name="air_pressure">Air Pressure \n%s</string>
+    <string name="sunrise">Sunrise \n%s</string>
+    <string name="sunset">Sunset \n%s</string>
+    <string name="maximum">Max</string>
+    <string name="minimum">Min</string>
+</resources>

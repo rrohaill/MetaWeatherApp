@@ -1,0 +1,305 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="weatherInfo"
+            type="io.rohail.metaweatherapp.dashboard.model.WeatherInfoUI" />
+
+        <variable
+            name="viewModel"
+            type="io.rohail.metaweatherapp.dashboard.view.DashboardFragmentViewModel" />
+    </data>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+            android:id="@+id/swipeRefreshLayout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" >
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/mainLayout"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@drawable/bg_gradient"
+                android:orientation="vertical"
+                android:padding="20dp">
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/location_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="30dp"
+                    android:text="@{weatherInfo.title}"
+                    android:textColor="@android:color/white"
+                    android:textSize="30sp"
+                    android:textStyle="bold"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:text="@tools:sample/cities" />
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/location_date_time"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginBottom="16dp"
+                    android:text="@{weatherInfo.formattedDate}"
+                    android:textColor="@android:color/white"
+                    android:textSize="20sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/location_name"
+                    tools:text="@tools:sample/date/mmddyy" />
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/weather_icon"
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    android:layout_margin="8dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/location_date_time"
+                    tools:ignore="ContentDescription"
+                    tools:srcCompat="@drawable/ic_cloud" />
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/temp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginTop="20dp"
+                    android:text="@{weatherInfo.formattedTemp}"
+                    android:textColor="@android:color/white"
+                    android:textSize="24sp"
+                    android:textStyle="bold"
+                    app:layout_constraintEnd_toStartOf="@+id/minTemp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/weather_icon"
+                    tools:text="20°" />
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/description"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="10dp"
+                    android:text="@{weatherInfo.weatherStateName}"
+                    android:textColor="@android:color/white"
+                    android:textSize="18sp"
+                    app:layout_constraintEnd_toEndOf="@+id/temp"
+                    app:layout_constraintStart_toStartOf="@+id/temp"
+                    app:layout_constraintTop_toBottomOf="@id/temp"
+                    tools:text="Sunny" />
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/minTemp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginTop="20dp"
+                    android:text="@{weatherInfo.formattedMinTemp}"
+                    android:textColor="@android:color/white"
+                    android:textSize="24sp"
+                    android:textStyle="bold"
+                    app:layout_constraintStart_toEndOf="@+id/temp"
+                    app:layout_constraintTop_toBottomOf="@id/weather_icon"
+                    app:layout_constraintEnd_toStartOf="@+id/maxTemp"
+                    app:layout_constraintBottom_toBottomOf="@+id/temp"
+                    tools:text="-3°" />
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/minTempTitle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="10dp"
+                    android:text="@string/minimum"
+                    android:textColor="@android:color/white"
+                    android:textSize="18sp"
+                    app:layout_constraintEnd_toEndOf="@+id/minTemp"
+                    app:layout_constraintStart_toStartOf="@+id/minTemp"
+                    app:layout_constraintTop_toBottomOf="@id/minTemp"
+                    tools:text="Min. Temp." />
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/maxTemp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginTop="20dp"
+                    android:text="@{weatherInfo.formattedMaxTemp}"
+                    android:textColor="@android:color/white"
+                    android:textSize="24sp"
+                    android:textStyle="bold"
+                    app:layout_constraintStart_toEndOf="@+id/minTemp"
+                    app:layout_constraintTop_toBottomOf="@id/weather_icon"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintBottom_toBottomOf="@+id/minTemp"
+                    tools:text="27°" />
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/maxTempTitle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="10dp"
+                    android:text="@string/maximum"
+                    android:textColor="@android:color/white"
+                    android:textSize="18sp"
+                    app:layout_constraintEnd_toEndOf="@+id/maxTemp"
+                    app:layout_constraintStart_toStartOf="@+id/maxTemp"
+                    app:layout_constraintTop_toBottomOf="@id/maxTemp"
+                    tools:text="Max. Temp." />
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/humidity_icon"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:layout_marginTop="60dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/description"
+                    app:srcCompat="@drawable/ic_rain_drops"
+                    tools:ignore="ContentDescription" />
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/humidity"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginBottom="30dp"
+                    android:gravity="center"
+                    android:text="@{@string/humidity(weatherInfo.humidityPercentage)}"
+                    android:textColor="@android:color/white"
+                    android:textSize="16sp"
+                    app:layout_constraintEnd_toEndOf="@id/humidity_icon"
+                    app:layout_constraintStart_toStartOf="@id/humidity_icon"
+                    app:layout_constraintTop_toBottomOf="@id/humidity_icon"
+                    tools:text="43%" />
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/wind_icon"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    app:layout_constraintBottom_toBottomOf="@+id/humidity_icon"
+                    app:layout_constraintEnd_toStartOf="@id/humidity_icon"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/humidity_icon"
+                    app:srcCompat="@drawable/ic_baseline_air"
+                    tools:ignore="ContentDescription" />
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/wind"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginBottom="30dp"
+                    android:gravity="center"
+                    android:text="@{@string/wind_speed(weatherInfo.formattedWindSpeed)}"
+                    android:textColor="@android:color/white"
+                    android:textSize="16sp"
+                    app:layout_constraintEnd_toEndOf="@+id/wind_icon"
+                    app:layout_constraintStart_toStartOf="@+id/wind_icon"
+                    app:layout_constraintTop_toBottomOf="@+id/wind_icon"
+                    tools:text="7 mph" />
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/pressure_icon"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    app:layout_constraintBottom_toBottomOf="@+id/humidity_icon"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/humidity_icon"
+                    app:layout_constraintTop_toTopOf="@+id/humidity_icon"
+                    app:srcCompat="@drawable/ic_pressure"
+                    tools:ignore="ContentDescription" />
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/pressure"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginBottom="30dp"
+                    android:gravity="center"
+                    android:text="@{@string/air_pressure(weatherInfo.formattedAirPressure)}"
+                    android:textColor="@android:color/white"
+                    android:textSize="16sp"
+                    app:layout_constraintEnd_toEndOf="@+id/pressure_icon"
+                    app:layout_constraintStart_toStartOf="@+id/pressure_icon"
+                    app:layout_constraintTop_toBottomOf="@+id/pressure_icon"
+                    tools:text="12 mbar" />
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintVertical_bias=".1"
+                    app:layout_constraintTop_toBottomOf="@+id/wind">
+
+                    <androidx.appcompat.widget.AppCompatImageView
+                        android:id="@+id/sunrise_icon"
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+                        app:srcCompat="@drawable/ic_sunrise"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintEnd_toStartOf="@+id/sunset_icon"
+                        app:layout_constraintTop_toTopOf="parent"
+                        tools:ignore="ContentDescription" />
+
+                    <com.google.android.material.textview.MaterialTextView
+                        android:id="@+id/sunrise"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="16dp"
+                        android:layout_marginBottom="30dp"
+                        android:gravity="center"
+                        android:text="@{@string/sunrise(weatherInfo.sunRiseDate)}"
+                        android:textColor="@android:color/white"
+                        android:textSize="16sp"
+                        app:layout_constraintEnd_toEndOf="@+id/sunrise_icon"
+                        app:layout_constraintStart_toStartOf="@+id/sunrise_icon"
+                        app:layout_constraintTop_toBottomOf="@+id/sunrise_icon"
+                        tools:text="Sunrise" />
+
+                    <androidx.appcompat.widget.AppCompatImageView
+                        android:id="@+id/sunset_icon"
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+                        app:srcCompat="@drawable/ic_sunset"
+                        app:layout_constraintStart_toEndOf="@+id/sunrise_icon"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        tools:ignore="ContentDescription" />
+
+                    <com.google.android.material.textview.MaterialTextView
+                        android:id="@+id/sunset"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="16dp"
+                        android:layout_marginBottom="30dp"
+                        android:gravity="center"
+                        android:text="@{@string/sunset(weatherInfo.sunSetDate)}"
+                        android:textColor="@android:color/white"
+                        android:textSize="16sp"
+                        app:layout_constraintEnd_toEndOf="@+id/sunset_icon"
+                        app:layout_constraintStart_toStartOf="@+id/sunset_icon"
+                        app:layout_constraintTop_toBottomOf="@+id/sunset_icon"
+                        tools:text="Sunset" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+
+    </FrameLayout>
+</layout>
