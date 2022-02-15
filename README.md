@@ -28,7 +28,7 @@ o Berlin
 - [Retrofit](https://square.github.io/retrofit/)
 - [Glide](https://bumptech.github.io/glide/)
 - [Mockito](https://site.mockito.org/)
-- Unit tests (JUnit, Mockito.)
+- Unit tests (JUnit, Mockito, Instrumentation.)
 
 ## Architecture
 
