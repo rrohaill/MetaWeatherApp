@@ -1,6 +1,6 @@
 package io.rohail.metaweatherapp.dashboard.data
 
-import io.rohail.metaweatherapp.api.Result2
+import io.rohail.metaweatherapp.api.ApiResult
 import io.rohail.metaweatherapp.dashboard.model.WeatherInfoResult
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.Flow
@@ -23,7 +23,7 @@ class WeatherRepositoryImpl @Inject constructor(private val weatherDataSource: W
     override suspend fun fetchWeather(locationName: String) {
         weatherDataSource.fetchLocationByName(locationName = locationName).let { result ->
             when (result) {
-                is Result2.Success -> if (result.data.isNotEmpty())
+                is ApiResult.Success -> if (result.data.isNotEmpty())
                     withContext(Dispatchers.IO) {
                         fetchWeatherInfo(
                             locationName = locationName,
@@ -34,7 +34,7 @@ class WeatherRepositoryImpl @Inject constructor(private val weatherDataSource: W
                     getWeatherResultInternal(locationName = locationName).emit(
                         WeatherInfoResult.Error(errorMessage = "Try again")
                     )
-                is Result2.Error -> getWeatherResultInternal(locationName = locationName).emit(
+                is ApiResult.Error -> getWeatherResultInternal(locationName = locationName).emit(
                     WeatherInfoResult.Error(errorMessage = result.message)
                 )
             }
@@ -44,10 +44,10 @@ class WeatherRepositoryImpl @Inject constructor(private val weatherDataSource: W
     private suspend fun fetchWeatherInfo(locationName: String, woeid: Long) {
         weatherDataSource.fetchWeatherInfo(woeid = woeid).let { result ->
             when (result) {
-                is Result2.Success -> getWeatherResultInternal(locationName = locationName).emit(
+                is ApiResult.Success -> getWeatherResultInternal(locationName = locationName).emit(
                     WeatherInfoResult.Success(data = result.data)
                 )
-                is Result2.Error -> getWeatherResultInternal(locationName = locationName).emit(
+                is ApiResult.Error -> getWeatherResultInternal(locationName = locationName).emit(
                     WeatherInfoResult.Error(errorMessage = result.message)
                 )
             }

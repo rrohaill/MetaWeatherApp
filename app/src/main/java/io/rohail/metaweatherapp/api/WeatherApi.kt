@@ -1,7 +1,7 @@
 package io.rohail.metaweatherapp.api
 
 import io.rohail.metaweatherapp.dashboard.model.LocationNameResult
-import io.rohail.metaweatherapp.dashboard.model.WeatherInfo
+import io.rohail.metaweatherapp.dashboard.data.model.WeatherInfo
 import retrofit2.Response
 import retrofit2.http.GET
 import retrofit2.http.Path

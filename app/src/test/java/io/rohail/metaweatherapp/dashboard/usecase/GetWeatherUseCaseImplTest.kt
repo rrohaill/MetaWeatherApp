@@ -1,8 +1,11 @@
-package io.rohail.metaweatherapp
+package io.rohail.metaweatherapp.dashboard.usecase
 
 import com.nhaarman.mockitokotlin2.doReturn
 import com.nhaarman.mockitokotlin2.mock
 import io.rohail.metaweatherapp.dashboard.data.WeatherRepository
+import io.rohail.metaweatherapp.dashboard.data.model.ConsolidatedWeather
+import io.rohail.metaweatherapp.dashboard.data.model.Parent
+import io.rohail.metaweatherapp.dashboard.data.model.WeatherInfo
 import io.rohail.metaweatherapp.dashboard.model.*
 import io.rohail.metaweatherapp.dashboard.usecase.GetWeatherUseCaseImpl
 import io.rohail.metaweatherapp.utilities.toUI

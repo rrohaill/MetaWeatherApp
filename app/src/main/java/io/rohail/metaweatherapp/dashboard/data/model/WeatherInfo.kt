@@ -1,4 +1,4 @@
-package io.rohail.metaweatherapp.dashboard.model
+package io.rohail.metaweatherapp.dashboard.data.model
 
 import com.google.gson.annotations.SerializedName
 

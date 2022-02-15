@@ -57,7 +57,7 @@ class DashboardFragment : Fragment() {
             fragmentViewModel.getWeatherResultFlow().collectLatest { resultUI ->
                 when (resultUI) {
                     is WeatherInfoUIResult.Success -> setUI(resultUI.data)
-                    is WeatherInfoUIResult.Error -> binding.weatherIcon.setBackgroundResource(R.drawable.ic_error)
+                    is WeatherInfoUIResult.Error -> { setLoadingVisibility(false); binding.weatherIcon.setBackgroundResource(R.drawable.ic_error) }
                 }
             }
         }

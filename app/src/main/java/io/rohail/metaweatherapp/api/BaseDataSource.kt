@@ -16,8 +16,8 @@ abstract class BaseDataSource {
         handleError<T>(e)
     }
 
-    private fun <T> handleError(e: Throwable): Result2.Error<T> {
-        return Result2.Error(
+    private fun <T> handleError(e: Throwable): ApiResult.Error<T> {
+        return ApiResult.Error(
             message = e.message ?: "",
             error = ApiError(
                 message = e.message ?: "",
@@ -26,16 +26,16 @@ abstract class BaseDataSource {
         )
     }
 
-    private fun <T> handleResponse(response: Response<T>): Result2<T> {
+    private fun <T> handleResponse(response: Response<T>): ApiResult<T> {
         if (response.isSuccessful) {
             val body = response.body()
-            return if (body != null) Result2.Success(body)
-            else Result2.Error("Unknown error", ApiError(message = "Unknown Error"))
+            return if (body != null) ApiResult.Success(body)
+            else ApiResult.Error("Unknown error", ApiError(message = "Unknown Error"))
         }
         return buildApiError(response)
     }
 
-    private fun <T> buildApiError(error: Response<T>): Result2<T> {
+    private fun <T> buildApiError(error: Response<T>): ApiResult<T> {
         val msg = "Network call has failed for a following reason: ${error.message()}"
         val err = error.errorBody()?.let {
             val converter: Converter<ResponseBody, ApiError> = RetrofitFactory.retrofit!!
@@ -44,7 +44,7 @@ abstract class BaseDataSource {
         } ?: ApiError(
             message = "Error body is null or failed to parse it"
         )
-        return Result2.Error(msg, err)
+        return ApiResult.Error(msg, err)
     }
 }
 

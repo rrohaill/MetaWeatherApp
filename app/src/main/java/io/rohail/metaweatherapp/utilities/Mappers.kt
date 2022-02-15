@@ -1,6 +1,6 @@
 package io.rohail.metaweatherapp.utilities
 
-import io.rohail.metaweatherapp.dashboard.model.WeatherInfo
+import io.rohail.metaweatherapp.dashboard.data.model.WeatherInfo
 import io.rohail.metaweatherapp.dashboard.model.WeatherInfoUI
 
 fun WeatherInfo.toUI(): WeatherInfoUI {

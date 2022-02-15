@@ -1,7 +1,18 @@
 # MetaWeatherApp
-Example Android project in Kotlin which uses the https://www.metaweather.com/ api.
+Example Android project in Kotlin which uses the MetaWeather REST API: https://www.metaweather.com/
+
+<p align="center">
+<img src="/img.png?raw=true" width="300" />
+</p>
 
 # About the project
+App shows tomorrow’s weather forecast in the following six cities:
+o Gothenburg
+o Stockholm
+o Mountain View
+o London
+o New York
+o Berlin
 
 ## Used technologies
 - [LiveData](https://developer.android.com/topic/libraries/architecture/livedata)
