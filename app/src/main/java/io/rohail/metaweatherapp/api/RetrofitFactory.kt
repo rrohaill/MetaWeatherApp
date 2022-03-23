@@ -19,7 +19,6 @@ object RetrofitFactory {
     ): OkHttpClient {
         val builder = OkHttpClient().newBuilder()
             .addInterceptor(NetworkConnectionInterceptor(context))
-            .addInterceptor(NonSuccessfulResponseInterceptor())
             .callTimeout(60, TimeUnit.SECONDS)
             .connectTimeout(60, TimeUnit.SECONDS)
             .readTimeout(60, TimeUnit.SECONDS)
