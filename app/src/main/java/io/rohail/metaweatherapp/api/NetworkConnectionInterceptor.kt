@@ -24,7 +24,6 @@ class NetworkConnectionInterceptor(
 
     private fun hasInternetConnection(): Boolean = check()
 
-    @RequiresApi(Build.VERSION_CODES.M)
     private fun check(): Boolean {
         val cm = appContext.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager?
         cm?.let {
