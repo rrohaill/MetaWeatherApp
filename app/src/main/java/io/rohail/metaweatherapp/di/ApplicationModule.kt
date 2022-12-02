@@ -7,8 +7,8 @@ import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.android.qualifiers.ApplicationContext
 import dagger.hilt.components.SingletonComponent
-import io.rohail.metaweatherapp.api.ApiFactory
-import io.rohail.metaweatherapp.api.WeatherApi
+import io.rohail.metaweatherapp.network.ApiFactory
+import io.rohail.metaweatherapp.network.WeatherApi
 import io.rohail.metaweatherapp.dashboard.data.WeatherDataSource
 import io.rohail.metaweatherapp.dashboard.data.WeatherDataSourceImpl
 import io.rohail.metaweatherapp.dashboard.data.WeatherRepository

@@ -1,4 +1,4 @@
-package io.rohail.metaweatherapp.api
+package io.rohail.metaweatherapp.network
 
 import io.rohail.metaweatherapp.dashboard.model.LocationNameResult
 import io.rohail.metaweatherapp.dashboard.data.model.WeatherInfo

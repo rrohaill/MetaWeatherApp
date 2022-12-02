@@ -1,4 +1,4 @@
-package io.rohail.metaweatherapp.api
+package io.rohail.metaweatherapp.network
 
 import okhttp3.ResponseBody
 import retrofit2.Converter

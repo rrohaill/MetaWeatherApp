@@ -1,6 +1,6 @@
 package io.rohail.metaweatherapp.dashboard.data
 
-import io.rohail.metaweatherapp.api.ApiResult
+import io.rohail.metaweatherapp.network.ApiResult
 import io.rohail.metaweatherapp.dashboard.model.WeatherInfoResult
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.Flow

@@ -1,4 +1,4 @@
-package io.rohail.metaweatherapp.api
+package io.rohail.metaweatherapp.network
 
 
 /**

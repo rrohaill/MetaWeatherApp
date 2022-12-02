@@ -1,8 +1,8 @@
 package io.rohail.metaweatherapp.usecase
 
 import androidx.test.platform.app.InstrumentationRegistry
-import io.rohail.metaweatherapp.api.ApiFactory
-import io.rohail.metaweatherapp.api.ApiResult
+import io.rohail.metaweatherapp.network.ApiFactory
+import io.rohail.metaweatherapp.network.ApiResult
 import io.rohail.metaweatherapp.dashboard.data.WeatherDataSource
 import io.rohail.metaweatherapp.dashboard.data.WeatherDataSourceImpl
 import io.rohail.metaweatherapp.dashboard.model.LocationNameResult

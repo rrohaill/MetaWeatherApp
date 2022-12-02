@@ -1,8 +1,8 @@
 package io.rohail.metaweatherapp.dashboard.data
 
-import io.rohail.metaweatherapp.api.BaseDataSource
-import io.rohail.metaweatherapp.api.ApiResult
-import io.rohail.metaweatherapp.api.WeatherApi
+import io.rohail.metaweatherapp.network.BaseDataSource
+import io.rohail.metaweatherapp.network.ApiResult
+import io.rohail.metaweatherapp.network.WeatherApi
 import io.rohail.metaweatherapp.dashboard.model.LocationNameResult
 import io.rohail.metaweatherapp.dashboard.data.model.WeatherInfo
 import javax.inject.Inject
